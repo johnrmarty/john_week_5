@@ -6,33 +6,34 @@
 </div> 
 
 <table class="table table-striped">
-  <tr>
-    <th>Description</th>
-    <th>Event Address</th>
-    <th>Event Zipcode</th>
-    <th> </th>
-    <th> </th>
-    <th> </th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Event Address</th>
+      <th>Event Zipcode</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
     
-
   <tbody>
     <% @location.events.each do |event| %> 
   <tr>
-    <td><%= link_to event.name, location_event_path(@location, event)  %> </td> 
-    <td><%= event.address %></td>
-    <td><%= event.zipcode %></td>
+    <td><%= link_to event.description, location_event_path(@location, event)  %> </td> 
+    <td><%= event.date %></td>
+    <td><%= event.requires_id %></td>
         
       <td>
-      <%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger" %> 
+      <%= link_to 'Delete', location_event_path(@location, event), method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger" %> 
       </td>
       <td>
       <%= link_to 'Edit', edit_location_event_path(@location, event), class: "btn btn-info"%>
       </td>
       <td>
-      <%= link_to 'Create Event', new_location_event_path(location), class: "btn btn-info"%>
+      <%= link_to 'Create Event', new_location_event_path(@location), class: "btn btn-info"%>
       </td>
-      </div>
+
   </tr>
       <% end %> 
 
@@ -41,18 +42,6 @@
 
 
 </table>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

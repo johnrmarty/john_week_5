@@ -14,8 +14,7 @@ class EventsController < ApplicationController
 
   def create
       @event = Event.new(event_params)
-      @location = Location.find(params[:location_id])
-      @event.location_id = @location
+      @event.location_id = params[:location_id]
       if @event.save
         redirect_to locations_path notice: 'Event was successfully created.'       
       else
